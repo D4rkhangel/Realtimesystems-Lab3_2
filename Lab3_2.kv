@@ -1,0 +1,76 @@
+<ItemLabel@Label>:
+    font_size: 15
+    font_name: 'Got'
+    bold:'True' 
+    outline_width: 2
+    outline_color: [0,0,0]
+
+<MainWidget>:
+    speed: speed
+    deadline: deadline
+    iterations: iterations
+    w1: w1
+    w2: w2
+    orientation: 'vertical'
+    ItemLabel:
+        text: 'Pavliuk Oleksii, IO-72'
+        size_hint_y: .2
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 20
+        spacing: 20
+        GridLayout:
+            size_hint_x: .6
+            cols: 1
+            ItemLabel:
+                text: 'Speed of learning:'
+            ItemLabel:
+                text: 'Deadline:'
+            ItemLabel:
+                text: 'Iterations:'
+        GridLayout:
+            size_hint_x: .3
+            cols: 1
+            Widget:
+            TextInput:
+                id: speed
+                text: '0.01'
+                input_filter:'float'
+                multiline:False
+            Widget:
+            Widget:
+            TextInput:
+                id: deadline
+                text: '5'
+                input_filter:'int'
+                multiline:False
+            Widget:
+            Widget:
+            TextInput:
+                id: iterations
+                text: '10000'
+                input_filter:'int'
+                multiline:False
+            Widget:
+        GridLayout:
+            size_hint_x: .1
+    AnchorLayout:
+        size_hint_y: .1
+        anchor: ['middle','centre']
+        Button:
+            text: 'Train'
+            font_name: 'Got'
+            size_hint_x: .3
+            background_color: [.4,.12, .12, .65]
+            background_normal: ''
+            on_press: root.train()
+    ItemLabel:
+        size_hint_y: .1
+        text: ''
+        id: w1
+    ItemLabel:
+        size_hint_y: .1
+        text: ''
+        id: w2
+
+
