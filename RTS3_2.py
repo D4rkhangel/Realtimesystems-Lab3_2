@@ -2,6 +2,9 @@
 from kivy.core.text import LabelBase
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from kivy.factory import Factory
 import timeit
 import random
 
@@ -25,7 +28,7 @@ def perceptron(speed_of_learning, deadline, iterations):
     outputs = [0, 0, 0, 1]
     start_time = timeit.default_timer()
 
-    for _ in range(iterations):
+    for k in range(iterations):
         total_error = 0
 
         for i in range(len(outputs)):
@@ -39,7 +42,7 @@ def perceptron(speed_of_learning, deadline, iterations):
 
         if total_error == 0 or timeit.default_timer() - start_time > deadline:
             break
-    return weights[0], weights[1]
+    return weights[0], weights[1], k
 
 class MainWidget(BoxLayout):
     def train(self):
@@ -50,9 +53,12 @@ class MainWidget(BoxLayout):
             self.w1.text = 'Input is wrong.'
             self.w2.text = ''
             return
-        w1, w2 = perceptron(speed, deadline, iterations)
+        w1, w2, iter = perceptron(speed, deadline, iterations)
         self.w1.text = 'w1 = {0:.2f}'.format(w1)
         self.w2.text = 'w2 = {0:.2f}'.format(w2)
+        mypopup = Factory.MyPopup()
+        mypopup.numiter.text = str(iter)
+        mypopup.open()
         
 
 class Lab3_2App(App):

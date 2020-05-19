@@ -5,6 +5,20 @@
     outline_width: 2
     outline_color: [0,0,0]
 
+<MyPopup@Popup>:
+    numiter: numiter
+    auto_dismiss: False
+    title: 'Number of iterations:'
+    size_hint: None, None
+    size: 180, 120
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: numiter
+        Button:
+            text: 'Close'
+            on_release: root.dismiss()
+        
 <MainWidget>:
     speed: speed
     deadline: deadline
@@ -72,5 +86,3 @@
         size_hint_y: .1
         text: ''
         id: w2
-
-
